@@ -28,7 +28,11 @@
     padding-left: 10px;
 }
 
-
+#espacamento{
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
 
 /*Tabelas*/
 table, th, td {

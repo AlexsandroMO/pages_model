@@ -56,3 +56,6 @@ objs = Job.objects.filter(data_initial__gte=dI,data_final__lte=dF)'''
 
 # {% load static %}
 # {% block content %}{% endblock %}
+
+
+#https://pt.stackoverflow.com/questions/421135/como-fazer-redirect-na-p%C3%A1gina-com-django

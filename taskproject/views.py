@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 #from django.contrib.auth.decorators import login_required
-#from django.core.paginator import Paginator
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from .forms import CotationForm
 #from django.contrib import messages
@@ -59,13 +59,18 @@ def Doctypelist(request):
 
 def docummentypelist(request):
     
-    DocumentStandards = DocumentStandard.objects.all().order_by('doc_type')
+    Document = DocumentStandard.objects.all().order_by('doc_type')
     MyProjects = MyProject.objects.all().order_by('project_name') 
     Subjects = Subject.objects.all().order_by('subject_name') 
 
+    paginator = Paginator(Document, 10)
+    page = request.GET.get('page')
+
+    DocumentStandards = paginator.get_page(page)
+
     cols = ['NOME DO DOCUMENTO', 'SIGLA DOC','FORMATO', 'TIPO FOLHA', 'DATA DE CRAÇÃO', 'ULTIMA ATUALIZAÇÃO']
 
-    return render(request, 'taskproject/tipos-documentos.html', {'DocumentStandards': DocumentStandards, 'cols':cols, 'MyProjects':MyProjects, 'Subjects': Subjects})
+    return render(request, 'taskproject/tipos-documentos.html', {'DocumentStandards': DocumentStandards, 'cols': cols, 'MyProjects': MyProjects, 'Subjects': Subjects})
 
 
 
@@ -119,8 +124,12 @@ def Cotationlist(request):
     Cotations = Cotation.objects.all().order_by('subject_name').order_by('doc_name').order_by('proj_name')
     MyProjects = MyProject.objects.all().order_by('project_name')
     Subjects = Subject.objects.all().order_by('subject_name')
-
     DocStandards = DocumentStandard.objects.all()
+
+    '''paginator = Paginator(Cota, 10)
+    page = request.GET.get('page')
+
+    Cotations = paginator.get_page(page)'''
 
     print('>>>>>>', request.GET)
 
@@ -158,21 +167,28 @@ def Cotationlist(request):
             trata_cota.trata_cotation(str(val), cost_type)
 
 
-        cols = ['NOME DO PROJETO', 'DISCIPLINA', 'TIPO DOC.', 'NOME DOC','COD. DOC.', 'TIPO FOLHA','EXT. DOC','QD. FOLHAS', 'QT. HH','CUSTO DOC.', 'ULTIMA ATUALIZAÇÃO']
+        if proj_filter != 0 and sub_filter == 0:
+ 
+            Cotations = Cotation.objects.all().filter(proj_name=proj_filter).order_by('cod_doc_type')
 
-        if proj_filter != 0 and sub_filter != 0:
-            print('ENTROU')
-            Cotations = Cotation.objects.all().filter(proj_name=proj_filter, subject_name=sub_filter).order_by('cod_doc_type')
-            
+            cols = ['NOME DO PROJETO', 'DISCIPLINA', 'TIPO DOC.', 'NOME DOC','COD. DOC.', 'TIPO FOLHA','EXT. DOC','QD. FOLHAS', 'QT. HH','CUSTO DOC.']
+
             #return redirect('cotation-list', Cotations='Cotations')
             return render(request, 'taskproject/cotation.html', {'Cotations':Cotations, 'DocStandards':DocStandards,'cols':cols, 'MyProjects':MyProjects})
+	    
+        if proj_filter != 0 and sub_filter != 0:
+
+            Cotations = Cotation.objects.all().filter(proj_name=proj_filter, subject_name=sub_filter).order_by('cod_doc_type')
+
+            cols = ['NOME DO PROJETO', 'DISCIPLINA', 'TIPO DOC.', 'NOME DOC','COD. DOC.', 'TIPO FOLHA','EXT. DOC','QD. FOLHAS', 'QT. HH','CUSTO DOC.']
+
+            return render(request, 'taskproject/cotation.html', {'Cotations':Cotations, 'DocStandards':DocStandards,'cols':cols, 'MyProjects':MyProjects})
 	
-
-            #https://pt.stackoverflow.com/questions/421135/como-fazer-redirect-na-p%C3%A1gina-com-django
-
+        
         return redirect('cotation-list' )
 
-    cols = ['NOME DO PROJETO', 'DISCIPLINA', 'TIPO DOC.', 'NOME DOC','COD. DOC.', 'TIPO FOLHA','EXT. DOC','QD. FOLHAS', 'QT. HH','CUSTO DOC.', 'ULTIMA ATUALIZAÇÃO']
+
+    cols = ['NOME DO PROJETO', 'DISCIPLINA', 'TIPO DOC.', 'NOME DOC','COD. DOC.', 'TIPO FOLHA','EXT. DOC','QD. FOLHAS', 'QT. HH','CUSTO DOC.']
 
     return render(request, 'taskproject/cotation.html', {'Cotations':Cotations, 'DocStandards':DocStandards,'cols':cols, 'MyProjects':MyProjects, 'Subjects':Subjects})
 	
