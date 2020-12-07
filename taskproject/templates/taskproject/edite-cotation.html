@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Cotação{% endblock %}
+{% block content %}
+
+<!-- Content -->
+<div id="content" class="flex">
+        
+    <h1>Cotaçãso do Projeto</h1>
+    
+    <div id="content-main">
+
+                <div class="results">
+                    <table id="result_list">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col"  class="column-__str__">
+                                <div class="text">NOME DO PROJETO</div>
+                            </th>
+                            <th scope="col"  class="column-__str__">
+                                <div class="text">DISCIPLINA</div>
+                            <th scope="col"  class="column-__str__">
+                                <div class="text">TIPO DOC.</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="text">NOME DOC</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="text">COD. DOC.</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="text">TIPO FOLHA</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="text">EXT. DOC</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="text">QD. FOLHAS</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="text">QT. HH</div>
+                            </th>
+                            <th scope="col"  class="column-__str__"> 
+                                <div class="clear"></div>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <tr>
+                                <td class="field-comments">{{form.proj_name}}</td>
+                                <td class="field-comments">{{form.subject_name}}</td>
+                                <td class="field-comments">{{form.doc_name_pattern}}</td>
+                                <td class="field-comments">{{form.doc_name}}</td>
+                                <td class="field-comments">{{form.cod_doc_type}}</td>
+                                <td class="field-comments">{{form.page_type}}</td>
+                                <td class="field-comments">{{form.format_doc}}</td>
+                                <td class="field-comments">{{form.qt_page}}</td>
+                                <td class="field-comments">{{form.qt_hh}}</td>
+                            </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-sucess" value="Editar Documento">
+                
+                    <a href="{% url 'cotation-list' %}"><button type="submit" class="button" title="back" name="index" value="0">Voltar</button></a>
+                </div>
+                </form>
+                <p class="paginator">3 document standards</p>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
