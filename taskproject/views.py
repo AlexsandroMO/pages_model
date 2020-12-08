@@ -34,8 +34,14 @@ def index(request):
 
 def projectlist(request):
 
-    MyProjects = MyProject.objects.all().order_by('-project_name')
-    cols = ['NOME DO PROJETO', 'NOME DA EMPRESA','COMENTÁRIOS', 'DATA DE CRAÇÃO', 'ULTIMA ATUALIZAÇÃO']
+    MyProj = MyProject.objects.all().order_by('-project_name')
+
+    paginator = Paginator(MyProj, 10)
+    page = request.GET.get('page')
+
+    MyProjects = paginator.get_page(page)
+
+    cols = ['NOME DO PROJETO', 'NOME DA EMPRESA','COMENTÁRIOS']
 
     return render(request, 'taskproject/projetos.html', {'MyProjects': MyProjects, 'cols':cols})
 
