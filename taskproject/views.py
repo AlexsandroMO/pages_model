@@ -57,7 +57,11 @@ def Pagetypelist(request):
 
 def Doctypelist(request):
     
-    docts = DocT.objects.all()
+    doc = DocT.objects.all()
+    paginator = Paginator(doc, 10)
+    page = request.GET.get('page')
+
+    docts = paginator.get_page(page)
 
     return render(request, 'taskproject/doc-type.html', {'docts': docts})
 
@@ -82,7 +86,11 @@ def docummentypelist(request):
 
 def Subjectlist(request):
     
-    Subjects = Subject.objects.all().order_by('-subject_name') 
+    Sub = Subject.objects.all().order_by('-subject_name')
+    paginator = Paginator(Sub, 10)
+    page = request.GET.get('page')
+
+    Subjects = paginator.get_page(page)
 
     return render(request, 'taskproject/disciplinas.html', {'Subjects': Subjects})
 
@@ -98,7 +106,12 @@ def Actionlist(request):
 
 def Statuslist(request):
     
-    StatusDocs = StatusDoc.objects.all().order_by('-doc_status') 
+    Status = StatusDoc.objects.all().order_by('-doc_status')
+
+    paginator = Paginator(Status, 10)
+    page = request.GET.get('page')
+
+    StatusDocs = paginator.get_page(page)
 
     return render(request, 'taskproject/status-doc.html', {'StatusDocs': StatusDocs})
 
@@ -106,8 +119,14 @@ def Statuslist(request):
 
 def Employeelist(request):
     
-    Employees = Employee.objects.all().order_by('-emp_name')
-    cols = ['NOME DO COLABORADOR', 'CARGO', 'REGISTRO', 'DATA DE CRAÇÃO', 'ULTIMA ATUALIZAÇÃO']
+    Empl = Employee.objects.all().order_by('-emp_name')
+
+    paginator = Paginator(Empl, 10)
+    page = request.GET.get('page')
+
+    Employees = paginator.get_page(page)
+
+    cols = ['NOME DO COLABORADOR', 'CARGO', 'REGISTRO']
 
     return render(request, 'taskproject/employee.html', {'Employees': Employees, 'cols':cols})
 
@@ -286,6 +305,7 @@ def Create_LD(request):
             itens.append(list_get[a][10:])
 
     print('\n-----------------------------------------')
+    print(request.GET.get)
 
     if len(itens[len(itens)-1]) == 3:
         itens[len(itens)-1] = itens[len(itens)-1][:1]
@@ -294,7 +314,7 @@ def Create_LD(request):
         itens[len(itens)-1] = itens[len(itens)-1][:2]
 
     
-    if itens[3] == 'All':
+    if itens[1] == 'All':
         list_id = itens[4:]
     else:
         list_id = itens[3:]
@@ -306,8 +326,8 @@ def Create_LD(request):
 
     if itens[0] == 'create_budget' and len(itens) > 3:
         #result = trata_cota.cria_orc(result_itens)
-        trata_cota.cria_orc(result_itens)
-        #print(result)
+        #trata_cota.cria_orc(result_itens)
+        print(result_itens)
 
     #---------------------------------------------------------- Sei que tem como fazer isso de forma muito mais simples, mas por hora foi o que consegui fazer. (Estudar como fazer isso com recursos django...)
 
