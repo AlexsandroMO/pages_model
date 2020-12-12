@@ -12,37 +12,61 @@
           <div class="card-header">
             <h3 class="card-title">Modelo de Documentação Técnica</h3>
           </div>
-
-          <form action="{% url 'cotation-list' %}" method="GET" id="changelist-form" novalidate>
-            <!-- Caixa de seleção - CheckBox -->
-            <div class="actions">
-                <label><select class="form-control" name="action" required>
-                  <option value="" selected>---------</option>
-                  <option value="create_LD">Criar Lista de Documento</option>
-                  <option value="create_budget">Criar Orçamento</option>
-                </select></label>
-
-                <label><select class="form-control" name="action" required>
-                  <option value="" selected>---------</option>
-                  {% for proj in MyProjects %}
-                  <option value={{proj.id}}>{{proj.project_name}}</option>
-                  {% endfor%}
-                </select></label>
-
-                <label><select class="form-control" name="action" required>
-                  <option value="" selected>---------</option>
-                  {% for sub in Subjects %}
-                  <option value={{sub.id}}>{{sub.subject_name}}</option>
-                  {% endfor%}
-                </select></label>
-
         
-                <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Criar Planilha</button>
-            </div>
+        <div class="card-body">
 
 
+
+
+          <table> <!-- class="table table-bordered table-striped" -->
+            <thead>
+            <tr>
+              <th>AÇÃO</th>
+              <th>NOME DO PROJETO</th>
+              <th>DISCIPLINA</th>
+            </tr>
+            </thead>
+              <form action="{% url 'create-LD' %}" method="GET" id="changelist-form" novalidate>
+              <div class="actions">
+            <tbody>
+              <tr>
+                <td id="alinha-td">
+                  <label><select class="form-control" name="action" required>
+                    <option value="" selected>---------</option>
+                    <option value="create_LD">Criar Lista de Documento</option>
+                    <option value="create_budget">Criar Orçamento</option>
+                  </select></label>
+                </td>
+                <td id="alinha-td">
+                  <label><select class="form-control" name="proj" required>
+                    <option value="" selected>---------</option>
+                    {% for proj in MyProjects %}
+                    <option value={{proj.id}}>{{proj.project_name}}</option>
+                    {% endfor%}
+                  </select></label>
+                </td>
+                <td id="alinha-td">
+                  <label><select class="form-control" name="sub" required>
+                    <option value="" selected>---------</option>
+                    {% for sub in Subjects %}
+                    <option value={{sub.id}}>{{sub.subject_name}}</option>
+                    {% endfor%}
+                  </select></label>
+                </td>
+                <td id="alinha-td-bt">
+                  <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Criar Planilha</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+              </div>
+  
           <!-- /.card-header -->
-          <div class="card-body">
+
+          <div class="row">
+         
              <table id="example2" class="table table-bordered table-hover"> <!-- class="table table-bordered table-striped" -->
               <thead>
               <tr name="selected">
@@ -58,23 +82,27 @@
                 {% endfor %}
               </tr>
               </thead>
+              
               <tbody>
                 {% csrf_token %}
                 {% for doc in DocumentStandards %}
                 <tr>
-                    <td class="action-checkbox"><input type="checkbox" name="action" value="{{doc.id}}" class="action-select" id="selected">
-                    <td class="field-project_name"><a href="http://127.0.0.1:8000/edite_cotation/{{doc.id}}">{{doc.documment_name}}</a></td>
-                    <td>{{doc.doc_type}}</td>
-                    <td>{{doc.format_doc}}</td>
-                    <td>{{doc.doc_type_page}}</td>
-                    <td>{{doc.created_doc}}</td>
-                    <td>{{doc.update_doc}}</td>
+                    <td class="action-checkbox" id="width-col0">
+                    <input type="checkbox" name="action" value={{doc.id}} class="action-select"></td>
+                    <!-- <td class="field-proj_name nowrap"><a href="http://127.0.0.1:8000/edite_cotation/{{doc.id}}">{{doc.documment_name}}</a></td> -->
+                    <th id="width-col1" class="field-proj_name nowrap"><a href="#">{{doc.documment_name}}</a></th>
+                    <td id="width-col2">{{doc.doc_type}}</td>
+                    <td id="width-col2">{{doc.format_doc}}</td>
+                    <td id="width-col2">{{doc.doc_type_page}}</td>
                 </tr>
                 {% endfor %}
               </tbody>
             </table>
 
-            <div class="row"><div class="col-sm-12 col-md-5">
+          </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-5">
                 <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Mostrando {{ DocumentStandards.number }} de {{ DocumentStandards.paginator.num_pages }} Listas</div>
             </div>
             

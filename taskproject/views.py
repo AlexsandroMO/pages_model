@@ -78,7 +78,7 @@ def docummentypelist(request):
 
     DocumentStandards = paginator.get_page(page)
 
-    cols = ['NOME DO DOCUMENTO', 'SIGLA DOC','FORMATO', 'TIPO FOLHA', 'DATA DE CRAÇÃO', 'ULTIMA ATUALIZAÇÃO']
+    cols = ['NOME DO DOCUMENTO', 'SIGLA DOC','FORMATO', 'TIPO FOLHA']
 
     return render(request, 'taskproject/tipos-documentos.html', {'DocumentStandards': DocumentStandards, 'cols': cols, 'MyProjects': MyProjects, 'Subjects': Subjects})
 
@@ -289,7 +289,6 @@ def Create_LD(request):
     url = str(request)
     list_get = url.split('&')
 
-    print('\n-----------------------------------------')
     itens = [] 
     for a in range(len(list_get)):
         if list_get[a][:4] == 'acti':
@@ -304,31 +303,32 @@ def Create_LD(request):
         elif list_get[a][:4] == '_sel':
             itens.append(list_get[a][10:])
 
-    print('\n-----------------------------------------')
-    print(request.GET.get)
-
+    #------------------------------------------------
     if len(itens[len(itens)-1]) == 3:
         itens[len(itens)-1] = itens[len(itens)-1][:1]
 
     elif len(itens[len(itens)-1]) == 4:
         itens[len(itens)-1] = itens[len(itens)-1][:2]
-
+    #------------------------------------------------
     
     if itens[1] == 'All':
         list_id = itens[4:]
     else:
         list_id = itens[3:]
 
+
     result_itens = [itens[:3],list_id]
 
-    print('>>>>>>',result_itens)
-
+    print('>>>>>>=====', result_itens)
 
     if itens[0] == 'create_budget' and len(itens) > 3:
         #result = trata_cota.cria_orc(result_itens)
         #trata_cota.cria_orc(result_itens)
-        print(result_itens)
+        print('ok')
+        return redirect('cotation-list')
+        
 
     #---------------------------------------------------------- Sei que tem como fazer isso de forma muito mais simples, mas por hora foi o que consegui fazer. (Estudar como fazer isso com recursos django...)
 
-    return redirect('cotation-list')
+    return redirect('documment-type-list')
+    #

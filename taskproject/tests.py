@@ -36,6 +36,12 @@ from django.test import TestCase
 #03001001213 - itau
 
 
+#pip install django-crispy-forms
+#{% load crispy_forms_tags %}
+
+
+
+
 
 '''
 from datetime import datetime

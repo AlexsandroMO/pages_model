@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
 {% block title %}Cotação{% endblock %}
+
 {% block content %}
+
 <!-- Content -->
 
 <!-- Main content -->
@@ -55,6 +56,8 @@
                     <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Filtrar Projeto</button>
                 </div>
  
+     <div class="row">
+
             <table id="example2" class="table table-bordered table-hover"> <!-- class="table table-bordered table-striped" -->
                 <thead>
                 <tr name="selected">
@@ -74,12 +77,12 @@
                 {% csrf_token %}
                 {% for cota in Cotations %}
                 <tr>
-                    <td class="action-checkbox"><input type="checkbox" name="_selected_action" value="1" class="action-select"></td>
-                    <th class="field-project_name"><a href="http://127.0.0.1:8000/edite_cotation/{{cota.id}}">{{cota.proj_name}}</a></th>
-                    <td>{{cota.subject_name}}</td>
-                    <td>{{cota.doc_name_pattern}}</td>
-                    <td>{{cota.doc_name}}</td>
-                    <td>{{cota.cod_doc_type}}</td>
+                    <td id="width-col0" class="action-checkbox"><input type="checkbox" name="_selected_action" value={{cota.id}} class="action-select"></td>
+                    <th id="width-col1" class="field-project_name"><a href="http://127.0.0.1:8000/edite_cotation/{{cota.id}}">{{cota.proj_name}}</a></th>
+                    <td id="width-col3">{{cota.subject_name}}</td>
+                    <td id="width-col4">{{cota.doc_name_pattern}}</td>
+                    <td id="width-col5">{{cota.doc_name}}</td>
+                    <td id="width-col6">{{cota.cod_doc_type}}</td>
                     <td>{{cota.format_doc}}</td>
                     <td>{{cota.page_type}}</td>
                     <td>{{cota.qt_page}}</td>
@@ -94,11 +97,11 @@
                 <th>Custo Total</th>
                 <th colspan="8"></th>
                 <th>20.500,00</th>
-                <th></th>
+  
               </tr>
               </tfoot>
             </table>
-
+          </div>
  <!--            <div class="row"><div class="col-sm-12 col-md-5">
                 <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Mostrando {{ Cotations.number }} de {{ Cotations.paginator.num_pages }} Listas</div>
             </div> -->
