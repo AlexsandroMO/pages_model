@@ -51,7 +51,7 @@ function MessagesCotation(){
 
 }
 
-document.getElementById('cota_show').style.display = 'none';
+document.getElementById('sidebar').style.display = 'none';
 
 function Mudarestado(el) {
     

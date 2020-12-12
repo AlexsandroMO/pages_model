@@ -65,9 +65,9 @@
   
           <!-- /.card-header -->
 
-          <div class="row">
+          <div id="ajusta-tabela" class="card-body table-responsive p-0" style="height: 400px;" >
          
-             <table id="example2" class="table table-bordered table-hover"> <!-- class="table table-bordered table-striped" -->
+             <table class="table table-bordered table-hover"> <!-- class="table table-bordered table-striped" -->
               <thead>
               <tr name="selected">
                 <th scope="col"  class="action-checkbox-column">
@@ -91,9 +91,9 @@
                     <input type="checkbox" name="action" value={{doc.id}} class="action-select"></td>
                     <!-- <td class="field-proj_name nowrap"><a href="http://127.0.0.1:8000/edite_cotation/{{doc.id}}">{{doc.documment_name}}</a></td> -->
                     <th id="width-col1" class="field-proj_name nowrap"><a href="#">{{doc.documment_name}}</a></th>
-                    <td id="width-col2">{{doc.doc_type}}</td>
-                    <td id="width-col2">{{doc.format_doc}}</td>
-                    <td id="width-col2">{{doc.doc_type_page}}</td>
+                    <td id="width-col3">{{doc.doc_type}}</td>
+                    <td id="width-col3">{{doc.format_doc}}</td>
+                    <td id="width-col3">{{doc.doc_type_page}}</td>
                 </tr>
                 {% endfor %}
               </tbody>

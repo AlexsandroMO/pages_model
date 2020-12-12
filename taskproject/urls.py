@@ -8,6 +8,7 @@ urlpatterns = [
     
     path('hello/', views.hello),
     path('', views.index, name='index'),
+    path('datatable/', views.dataTable, name='data-table'),
     path('projects/', views.projectlist, name='project-list'),
     path('typeDocuments/', views.docummentypelist, name='documment-type-list'),
     path('Subject/', views.Subjectlist, name='subject-list'),

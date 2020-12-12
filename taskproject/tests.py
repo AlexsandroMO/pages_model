@@ -65,3 +65,9 @@ objs = Job.objects.filter(data_initial__gte=dI,data_final__lte=dF)'''
 
 
 #https://pt.stackoverflow.com/questions/421135/como-fazer-redirect-na-p%C3%A1gina-com-django
+
+
+
+#https://uicookies.com/bootstrap-datatable/
+#view-source:https://colorlib.com/polygon/octopus/tables-advanced.html
+

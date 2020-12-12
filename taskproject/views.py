@@ -20,6 +20,19 @@ def hello(request):
     return HttpResponse('<h1>Hello!</h1>')
 
 
+def dataTable(request):
+
+    MyProjects = MyProject.objects.all().order_by('project_name')
+    DocumentStandards = DocumentStandard.objects.all().order_by('doc_type') 
+    Actions = Action.objects.all().order_by('-action_type')
+    StatusDocs = StatusDoc.objects.all().order_by('-doc_status')
+    Employees = Employee.objects.all().order_by('-emp_name')
+    Cotations = Cotation.objects.all().order_by('-proj_name')
+
+    return render(request, 'taskproject/datatable.html', {'MyProjects': MyProjects, 'DocumentStandards': DocumentStandards, 'Actions': Actions, 'StatusDocs':StatusDocs, 'Employees':Employees, 'Cotations':Cotations})
+
+
+
 def index(request):
 
     MyProjects = MyProject.objects.all().order_by('project_name')

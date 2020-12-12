@@ -13,11 +13,15 @@
     max-width: 100%;
 }
 
+#ajusta-tabela{
+    max-width: 100%;
+    overflow: scroll
+}
+
 .scrollable-content {
     overflow-x:hidden;
     overflow-y:scroll;
   }
-
 
 .text{
     /* background-color: #d1d1d1;
@@ -94,19 +98,12 @@ td, th{
     width: 800px;
 }
 #width-col2{
-    width: 350px;
+    width: 1500px;
 }
 #width-col3{
     width: 250px;
 }
 
-#width-col4{
-    width: 1000px;
-}
-
-#width-col5{
-    width: 1500px;
-}
 
 
 
