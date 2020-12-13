@@ -71,3 +71,8 @@ objs = Job.objects.filter(data_initial__gte=dI,data_final__lte=dF)'''
 #https://uicookies.com/bootstrap-datatable/
 #view-source:https://colorlib.com/polygon/octopus/tables-advanced.html
 
+#https://datatables.net/
+
+
+#https://www.youtube.com/watch?v=nbD0HHjh5a8
+

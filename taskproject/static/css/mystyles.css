@@ -7,22 +7,6 @@
     margin: 0;
 }
 
-.row{
-    padding-left: 20px;
-    padding-right: 10px;
-    max-width: 100%;
-}
-
-#ajusta-tabela{
-    max-width: 100%;
-    overflow: scroll
-}
-
-.scrollable-content {
-    overflow-x:hidden;
-    overflow-y:scroll;
-  }
-
 .text{
     /* background-color: #d1d1d1;
     background-color: 	#B0E0E6; */
@@ -56,9 +40,13 @@
     
 }
 
+
+
+
+
 /*Tabelas*/
 
-/* table, th, td {
+* table, th, td {
 	border: 1px solid black;
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -68,8 +56,26 @@
 td, th{
 	border: 1px solid #dddddd;
     padding: 8px;
-} */
+} 
 
+.hscroll{
+    overflow-x: auto;
+    /* width: 1000px; */
+    height: 400px;
+}
+
+#width-col1{
+    width: 800px; 
+}
+
+#width-col2{
+    width: 500px; 
+}
+
+
+
+
+/* 
 #bt{
     padding: 0px;
     border-radius: 5px;
@@ -82,33 +88,41 @@ td, th{
 
 #alinha-td{
     padding-right: 10px;
-}
+} */
 
-#alinha-td-bt{
+/* #alinha-td-bt{
     position: relative;
-    top: -4px;
+    top: -4px; */
     /* padding-top: -20px; */
     /* margin: 50px; */
-}
+/* } */
 
-#width-col0{
-    width: 50px;
-}
-#width-col1{
-    width: 800px;
-}
-#width-col2{
-    width: 1500px;
-}
-#width-col3{
-    width: 250px;
-}
+/* #width-col0{
+    width: 1000px;
+} */
 
 
 
+
+
+/* #align-text{
+	text-align: center;
+} */
+
+
+/* 
+.content{
+    background-color: #708090;
+    color: white;
+}
+
+h1{
+    color: white;
+}
+ */
 
 /* CHANGELIST TABLES */
-
+/* 
 #changelist table thead th {
     padding: 0;
     white-space: nowrap;
@@ -126,21 +140,5 @@ td, th{
 
 #changelist table tfoot {
     color: #666;
-}
-
-
-/* #align-text{
-	text-align: center;
-} */
-
-
-/* 
-.content{
-    background-color: #708090;
-    color: white;
-}
-
-h1{
-    color: white;
 }
  */

@@ -12,13 +12,17 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <!-- My CSS -->
     <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/changelist.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -34,9 +38,18 @@
     <script src="/static/admin/js/prepopulate.js"></script>
     <script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    
+
+
 
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+
+
+
+
     
 
 
@@ -107,7 +120,7 @@
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <button type="button" id="sidebarCollapse" class="btn btn-info" onclick="Mudarestado('sidebar')">
+                <button type="button" id="sidebarCollapse" class="btn btn-info"> <!--</button>onclick="Mudarestado('sidebar')">-->
                     <i class="fas fa-align-left"></i>
                     <!-- <span>Área Administrativa</span> -->
                 </button>
@@ -127,7 +140,7 @@
                                 <a class="nav-link" href="{% url 'cotation-list' %}">Cotação de Projetos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="{% url 'data-table' %}">Datatables</a>
                             </li>
                         </ul>
                     </div>
@@ -163,13 +176,13 @@
 
     
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
       $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {
               $('#sidebar').toggleClass('active');
           });
       });
-    </script> -->
+    </script>
 
 
 </body>

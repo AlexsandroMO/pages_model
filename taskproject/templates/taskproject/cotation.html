@@ -6,13 +6,14 @@
 <!-- Content -->
 
 <!-- Main content -->
-<section class="content">
+<!-- <section class="content"> -->
+  <section class="panel">
     <div class="row">
       <div class="col-12">
         <div class="card">
 
           <div class="card-header">
-            <h3 class="card-title"><a href="{% url 'cotation-list' %}">Cotaçãso de Projetos</a></h3>
+            <h3 class="card-title"><a href="{% url 'cotation-list' %}">Cotação de Projetos</a></h3>
           </div>
 
         <div class="card-body">
@@ -23,7 +24,6 @@
                         <option value="" selected>---------</option>
                         <option value="delete_selected">Delete</option>
                         </select></label>
-
                         <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Ação</button>
 
                     <label><select class="form-control" name="cota" required>
@@ -37,58 +37,92 @@
                     <label id="espacamento">&nbsp;</label>
                     <label><select class="form-control" name="proj" required>
                     <option value="" selected>---------</option>
-                    
                     {% for proj in MyProjects %}
                         <option value={{proj.id}}>{{proj.project_name}}</option>
                     {% endfor %}
-                    
                     </select></label>
 
                     <label><select class="form-control" name="sub" required>
                         <option value="" selected>---------</option>
-                        
                         {% for sub in Subjects %}
                             <option value={{sub.id}}>{{sub.subject_name}}</option>
                         {% endfor %}
-                        
                     </select></label>
         
                     <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Filtrar Projeto</button>
                 </div>
  
-        <div id="ajusta-tabela" class="card-body table-responsive p-0" style="height: 400px;" >
-          
+        <!-- <div id="ajusta-div-table" class="card-body table-responsive p-0" style="height: 400px;" > -->
+           <!-- <div class="panel-body">  -->
+             <div class="hscroll">
 
-            <table  id="ajusta-tabela" class="table table-bordered table-hover"> <!-- class="table table-bordered table-striped" -->
+            <!-- <table id="datatables-basic" class="table table-bordered dataTable dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-basic_info"> -->
+             <table id="ajusta-tabela" > <!-- class="table table-bordered bordered table-striped table-condensed datatable" class="table table-bordered table-hover" class="table table-bordered table-striped"   class="table table-bordered table-striped mb-none" -->
               <thead>
                 <tr name="selected">
-                <th scope="col"  class="action-checkbox-column">
-                    <div class="text"><span><input type="checkbox" name="_selected" value="All" id="action-toggle"></span></div>
+                  <th scope="col"  class="action-checkbox-column">
+                      <div class="text"><span><input type="checkbox" name="_selected" value="All" id="action-toggle"></span></div>
+                      <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__" id="width-col1">
+                      <div class="text"><a href="?">NOME DO PROJETO</a></div>
+                      <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__" id="width-col1">
+                    <div class="text"><a href="?">DISCIPLINA</a></div>
                     <div class="clear"></div>
-                </th>
-                {% for col in cols %}
-                <th scope="col"  class="column-__str__">
-                    <div class="text"><a href="X">{{ col }}</a></div>
+                  </th>
+                  <th scope="col"  class="column-__str__" id="width-col1">
+                    <div class="text"><a href="?">TIPO DE DOCUMENTO</a></div>
                     <div class="clear"></div>
-                </th>
-                {% endfor %}
+                  </th>
+                  <th scope="col"  class="column-__str__" id="width-col1">
+                    <div class="text"><a href="?">
+                      NOME DO DOCUMENTO</a></div>
+                    <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__">
+                    <div class="text"><a href="?">CÓD. DOC.</a></div>
+                    <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__" id="width-col2>
+                    <div class="text"><a href="?">TIPO DE FOLHA</a></div>
+                    <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__">
+                    <div class="text"><a href="?">EXT. DOC.</a></div>
+                    <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__">
+                    <div class="text"><a href="X">QT. FOLHA</a></div>
+                    <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__">
+                    <div class="text"><a href="?">QT. HH</a></div>
+                    <div class="clear"></div>
+                  </th>
+                  <th scope="col"  class="column-__str__">
+                    <div class="text"><a href="?">CUSTO DOC.</a></div>
+                    <div class="clear"></div>
+                  </th>
+
                 </tr>
               </thead>
               <tbody>
                 {% csrf_token %}
                 {% for cota in Cotations %}
                 <tr>
-                    <td id="width-col0" class="action-checkbox"><input type="checkbox" name="_selected_action" value={{cota.id}} class="action-select"></td>
-                    <th id="width-col1" class="field-project_name"><a href="http://127.0.0.1:8000/edite_cotation/{{cota.id}}">{{cota.proj_name}}</a></th>
-                    <td id="width-col2">{{cota.subject_name}}</td>
-                    <td id="width-col2">{{cota.doc_name_pattern}}</td>
-                    <td id="width-col2">{{cota.doc_name}}</td>
-                    <td id="width-col3">{{cota.cod_doc_type}}</td>
-                    <td id="width-col3">{{cota.format_doc}}</td>
-                    <td id="width-col3">{{cota.page_type}}</td>
-                    <td id="width-col3">{{cota.qt_page}}</td>
-                    <td id="width-col3">{{cota.qt_hh}}</td>
-                    <td id="width-col3">{{cota.cost_doc}}</td>
+                    <td class="action-checkbox"><input type="checkbox" name="_selected_action" value={{cota.id}} class="action-select"></td>
+                    <th class="field-project_name"><a href="http://127.0.0.1:8000/edite_cotation/{{cota.id}}">{{cota.proj_name}}</a></th>
+                    <td>{{cota.subject_name}}</td>
+                    <td>{{cota.doc_name_pattern}}</td>
+                    <td>{{cota.doc_name}}</td>
+                    <td>{{cota.cod_doc_type}}</td>
+                    <td>{{cota.format_doc}}</td>
+                    <td>{{cota.page_type}}</td>
+                    <td>{{cota.qt_page}}</td>
+                    <td>{{cota.qt_hh}}</td>
+                    <td>{{cota.cost_doc}}</td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -103,121 +137,6 @@
               </tfoot>
             </table>
           </div>
-
-
-
-
-
-          <section class="panel">
-
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-        
-                  <div class="card-header">
-                    <h3 class="card-title"><a href="{% url 'cotation-list' %}">Cotaçãso de Projetos</a></h3>
-                  </div>
-
-            <div class="card-body">
-              <form action="{% url 'cotation-list' %}" method="GET" id="changelist-form" novalidate>
-              <!-- Caixa de seleção - CheckBox -->
-              <div class="actions" >
-                  <label><select class="form-control" name="action" required>
-                      <option value="" selected>---------</option>
-                      <option value="delete_selected">Delete</option>
-                      </select></label>
-
-                      <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Ação</button>
-
-                  <label><select class="form-control" name="cota" required>
-                      <option value="" selected>---------</option>
-                      <option value="option1">HH</option>
-                      <option value="option2">DOC</option>
-                      <option value="option3">A1</option>
-                      </select></label>
-                      
-                  <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Cotar</button>
-                  <label id="espacamento">&nbsp;</label>
-                  <label><select class="form-control" name="proj" required>
-                  <option value="" selected>---------</option>
-                  
-                  {% for proj in MyProjects %}
-                      <option value={{proj.id}}>{{proj.project_name}}</option>
-                  {% endfor %}
-                  
-                  </select></label>
-
-                  <label><select class="form-control" name="sub" required>
-                      <option value="" selected>---------</option>
-                      
-                      {% for sub in Subjects %}
-                          <option value={{sub.id}}>{{sub.subject_name}}</option>
-                      {% endfor %}
-                      
-                  </select></label>
-      
-                  <button type="submit" class="btn btn-secondary" title="Run the selected action" name="index" value="0">Filtrar Projeto</button>
-              </div>
-
-
-            <div class="panel-body" id="ajusta-tabela">
-            <table class="table table-bordered table-striped mb-none" id="ajusta-tabela">
-            <thead>
-              <tr name="selected">
-                <th scope="col"  class="action-checkbox-column">
-                    <div class="text"><span><input type="checkbox" name="_selected" value="All" id="action-toggle"></span></div>
-                    <div class="clear"></div>
-                </th>
-                {% for col in cols %}
-                <th scope="col"  class="column-__str__">
-                    <div class="text"><a href="X">{{ col }}</a></div>
-                    <div class="clear"></div>
-                </th>
-                {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-              {% csrf_token %}
-              {% for cota in Cotations %}
-              <tr>
-                  <td id="width-col0" class="action-checkbox"><input type="checkbox" name="_selected_action" value={{cota.id}} class="action-select"></td>
-                  <th id="width-col1" class="field-project_name"><a href="http://127.0.0.1:8000/edite_cotation/{{cota.id}}">{{cota.proj_name}}</a></th>
-                  <td id="width-col2">{{cota.subject_name}}</td>
-                  <td id="width-col2">{{cota.doc_name_pattern}}</td>
-                  <td id="width-col2">{{cota.doc_name}}</td>
-                  <td id="width-col3">{{cota.cod_doc_type}}</td>
-                  <td id="width-col3">{{cota.format_doc}}</td>
-                  <td id="width-col3">{{cota.page_type}}</td>
-                  <td id="width-col3">{{cota.qt_page}}</td>
-                  <td id="width-col3">{{cota.qt_hh}}</td>
-                  <td id="width-col3">{{cota.cost_doc}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-            <tfoot>
-              <tr>
-                <th></th>
-                <th>Custo Total</th>
-                <th colspan="8"></th>
-                <th>20.500,00</th>
-  
-              </tr>
-              </tfoot>
-            </table>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-
-
 
 
 
@@ -241,11 +160,10 @@
       
         </div> -->
        
-        </div>
       </div>
     </div>
-    
-  </section>
+  </div>
+</section>
 
 {% endblock %}
 
