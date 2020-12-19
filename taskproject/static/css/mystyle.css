@@ -65,13 +65,12 @@ td, th{
 }
 
 #width-col1{
-    width: 800px; 
+    width: 20px; 
 }
 
 #width-col2{
-    width: 500px; 
+    width: 800px; 
 }
-
 
 
 
@@ -121,6 +120,7 @@ h1{
 }
  */
 
+ 
 /* CHANGELIST TABLES */
 /* 
 #changelist table thead th {
