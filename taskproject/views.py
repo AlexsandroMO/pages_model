@@ -235,18 +235,19 @@ def EditeCotation(request, id):
     Cotations = get_object_or_404(Cotation, pk=id)
     form = CotationForm(instance=Cotations)
 
-    cols = ['NOME DO PROJETO', 'DISCIPLINA', 'TIPO DOC.', 'NOME DOC','COD. DOC.', 'TIPO FOLHA','EXT. DOC','QD. FOLHAS', 'QT. HH']
-
     if request.method == 'POST':
         form = CotationForm(request.POST, instance=Cotations)
+        print('>>>>>>>>>>>>>>>>',request.POST)
+
         if form.is_valid():
-            Cotations = form.save()
+            #Cotations = form.save()
+            Cotations.save()
             return redirect('cotation-list')
         else:
-            return render(request, 'taskproject/edite-cotation.html', {'form': form, 'Cotations': Cotations, 'cols':cols}) 
+            return render(request, 'taskproject/edite-cotation.html', {'form': form, 'Cotations': Cotations}) 
 
     else:
-        return render(request, 'taskproject/edite-cotation.html', {'form': form, 'Cotations': Cotations,'cols':cols})
+        return render(request, 'taskproject/edite-cotation.html', {'form': form, 'Cotations': Cotations})
 
 
 def DeleteCotation(request, id):
