@@ -76,3 +76,6 @@ objs = Job.objects.filter(data_initial__gte=dI,data_final__lte=dF)'''
 
 #https://www.youtube.com/watch?v=nbD0HHjh5a8
 
+#https://colorlib.com/polygon/gentelella/tables_dynamic.html
+
+

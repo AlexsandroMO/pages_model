@@ -16,11 +16,14 @@
     
 }
 
+
+
+
 /* .navbar-brand{
     background: url('../img/twiter_logo.png') no-repeat;
 } */
 
-
+/* 
 
 #alinha-tables{
     padding-right: 30px;
@@ -44,39 +47,69 @@
     padding-left: 50px;
     padding-right: 50px;
     
-}
-
-
-
+} */
 
 
 /*Tabelas*/
 
-table, th, td {
+ table, th, td {
 	border: 1px solid black;
     font-family: arial, sans-serif;
     border-collapse: collapse;
+  } 
 
-  }
-
-td, th{
+ td, th{
 	border: 1px solid #dddddd;
     padding: 8px;
+
 } 
 
-.hscroll{
+table {
+    table-layout:fixed;
+    width:100%;
+    word-wrap:break-word;
+   }
+
+   /* min-width:20px;
+   max-width:500px;
+   overflow:scroll; */
+
+
+#col1{
+    width: 20px;
+}
+#col2{
+    width: 200px;
+}
+#col3{
+    width: 350px;
+}
+#col4{
+    width: 400px;
+}
+#col5{
+    width: 120px;
+}
+
+#col6{
+    width: 500px;
+}
+
+
+
+
+/* .hscroll{
     overflow-x: auto;
-    /* width: 1000px; */
+    width: 100px;
     height: 400px;
-}
+} */
 
-#width-col1{
-    width: 20px; 
-}
+/* 
+.bootstrap-data-table{
+    max-width: 100%;
+    overflow: scroll;
+} */
 
-#width-col2{
-    width: 800px; 
-}
 
 
 
