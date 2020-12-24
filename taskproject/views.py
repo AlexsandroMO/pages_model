@@ -235,14 +235,15 @@ def EditeCotation(request, id):
     Cotations = get_object_or_404(Cotation, pk=id)
     form = CotationForm(instance=Cotations)
 
-    if request.method == 'POST':
+    if (request.method == 'POST'):
         form = CotationForm(request.POST, instance=Cotations)
         print('>>>>>>>>>>>>>>>>',request.POST)
 
-        if form.is_valid():
+        if (form.is_valid()):
             #Cotations = form.save()
             Cotations.save()
             return redirect('cotation-list')
+            
         else:
             return render(request, 'taskproject/edite-cotation.html', {'form': form, 'Cotations': Cotations}) 
 

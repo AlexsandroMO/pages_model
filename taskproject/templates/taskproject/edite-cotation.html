@@ -31,6 +31,7 @@
                             <tbody>
                                 <form method="POST">
                                     {% csrf_token %}
+                                    <!-- {{ form.as_p }} -->
                                     <tr>
                                         <td >{{form.proj_name}}</td>
                                         <td >{{form.subject_name}}</td>
@@ -43,10 +44,10 @@
                                         <td >{{form.qt_hh}}</td>
                                     </tr>
                                     <div class="btn-group">
-                                        <input type="submit" name="_save" class="btn btn-success" value="Editar Paciente">
+                                        <input type="submit" class="btn btn-success" value="Editar">
 
-                                        <!-- <a href=""><button type="submit" class="btn btn-secondary" title="back" name="index" value="0">Editar</button></a>
-                                        <a href="{% url 'cotation-list' %}"><button type="submit" class="btn btn-light" title="back" name="index" value="0">Voltar</button></a> -->
+                                        <!-- <a href=""><button type="submit" class="btn btn-secondary" title="back" name="index" value="0">Editar</button></a> -->
+                                        <a href="{% url 'cotation-list' %}"><button type="submit" class="btn btn-light" title="back" name="index" value="0">Voltar</button></a>
                                     </div>
                                 </form>
                             </tbody>

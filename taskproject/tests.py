@@ -79,3 +79,4 @@ objs = Job.objects.filter(data_initial__gte=dI,data_final__lte=dF)'''
 #https://colorlib.com/polygon/gentelella/tables_dynamic.html
 
 
+#https://colorlib.com/polygon/sufee/tables-data.html << site

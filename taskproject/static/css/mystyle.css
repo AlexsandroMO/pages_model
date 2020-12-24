@@ -12,13 +12,12 @@
     background-color: 	#B0E0E6; */
     /* font-size: 14px; */
     color: rgb(39, 43, 46);
-    /* text-align: center; */
-    
 }
+
 
 /* 
 .navbar-brand{
-    background: url('../img/twiter_logo.png') no-repeat;
+    background: url('../img/twiter_logo.png') no-repeat; display: inline-block; - uma div do lado da outra
 } */
 
 
@@ -32,7 +31,7 @@ table, th, td {
  td, th{
 	border: 1px solid #dddddd;
     padding: 8px;
-    text-align: center;
+    /* text-align: center; */
 } 
 
 
@@ -42,12 +41,15 @@ table {
     word-wrap:break-word;
    }
 
+
+/*Dimencionamento de Colunas*/
 #col-id{
     width: 10px;
 }
 #col-name-proj{
     width: 200px;
 }
+
 #col-disc{
     width: 200px;
 }
@@ -65,7 +67,14 @@ table {
     width: 100px;
 }
 
+/*Colorir Referência ID*/
+#col-nome-proj{
+    color:rgb(163, 84, 10);
 
+}
+
+
+/*Dimencionamento de Colunas de edição*/
 #col-name-employee{
     width: 300px;
 }
@@ -73,7 +82,6 @@ table {
 #col-name-comment{
     width: 500px;
 }
-
 
 #id_proj_name{
     width: 210px;
